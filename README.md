@@ -1,32 +1,78 @@
-# Online Voting System
+# 🗳️ Online Voting System
 
-An educational web-based voting application built with Java, Spring MVC, Hibernate, JSP, and MySQL. The project demonstrates a basic online voting workflow with user registration and login, candidate management, vote submission, and result viewing.
+### A Java-Based Web Application for Digital Voting
 
-> **Important:** This project is intended for learning and demonstration only. It has not been reviewed or hardened for real elections or other high-stakes voting. Do not use it to collect real votes or sensitive personal information.
+A web-based voting application developed using **Java, Spring MVC, Hibernate, JSP, and MySQL**. This project demonstrates a basic digital voting workflow, including user registration, authentication, candidate management, vote submission, and result visualization.
 
-## Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/Spring%20MVC-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring MVC"/>
+  <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white" alt="Hibernate"/>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
+  <img src="https://img.shields.io/badge/JSP-FF6F00?style=for-the-badge" alt="JSP"/>
+</p>
 
+> [!IMPORTANT]
+> **Educational Use Only:** This project is intended for learning and demonstration. It has not been independently audited or secured for real elections. Do not use it to collect real votes or sensitive personal information.
+
+---
+
+## 📌 Table of Contents
+
+- [✨ Features](#-features)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📂 Project Structure](#-project-structure)
+- [⚙️ Prerequisites](#️-prerequisites)
+- [🚀 Installation and Setup](#-installation-and-setup)
+- [🔐 Demo Data and Security](#-demo-data-and-security)
+- [⚠️ Limitations](#️-limitations-and-future-improvements)
+- [📄 License](#-license)
+- [📬 Contact](#-contact)
+
+---
+
+## ✨ Features
+
+### 👤 Voter Module
 - User registration and login
-- Session-based user authentication
-- Separate admin and voter views
-- Candidate listing and voting
+- Session-based authentication
+- Candidate listing and selection
+- Vote submission workflow
 - Vote status tracking to help prevent repeat voting
-- Results page showing candidate vote totals
-- Admin functions to add and delete candidates
-- MySQL persistence through Hibernate ORM
-- JSP views styled with CSS
+- View election results and candidate vote totals
 
-## Technology Stack
+### 🛡️ Admin Module
+- Separate administrator interface
+- Add and delete candidates
+- Manage the candidate list
+- View voting results
 
-- **Language:** Java
-- **Web framework:** Spring MVC 5
-- **ORM:** Hibernate 5
-- **View layer:** JSP, JSTL, HTML, CSS
-- **Database:** MySQL
-- **Build tool:** Maven
-- **Deployment:** WAR application on a compatible servlet container, such as Apache Tomcat 9
+### ⚙️ Application Features
+- MVC architecture using Spring MVC
+- Hibernate ORM for database operations
+- MySQL database persistence
+- JSP-based dynamic user interfaces
+- CSS styling for page presentation
+- Maven-based build and WAR deployment
 
-## Project Structure
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Java | Core programming language |
+| Spring MVC 5 | Web MVC framework |
+| Hibernate 5 | Object-relational mapping |
+| JSP & JSTL | Dynamic web pages |
+| HTML5 & CSS3 | Frontend presentation |
+| MySQL | Relational database |
+| Apache Maven | Dependency management and build |
+| Apache Tomcat 9 | Application deployment |
+
+---
+
+## 📂 Project Structure
 
 ```text
 OnlineVotingSystem/
@@ -36,79 +82,146 @@ OnlineVotingSystem/
         ├── java/com/
         │   ├── config/       # Startup data seeding
         │   ├── controller/   # MVC controllers
-        │   ├── dao/          # Data access
+        │   ├── dao/          # Data access layer
         │   ├── model/        # Hibernate entities
         │   └── service/      # Application logic
-        ├── resources/
+        ├── resources/        # Configuration resources
         └── webapp/
-            ├── resources/    # CSS and other static assets
+            ├── resources/    # CSS and static assets
             ├── WEB-INF/
-            │   └── view/     # JSP pages
+            │   └── view/     # JSP views
             └── index.jsp
 ```
 
-## Prerequisites
+---
 
-- JDK 11 or a compatible JDK
-- Apache Maven
-- MySQL Server
-- Apache Tomcat 9 or another compatible `javax.servlet` container
-- Eclipse IDE or another Java IDE (optional)
+## ⚙️ Prerequisites
 
-## Setup and Run
+Ensure the following software is installed:
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/OnlineVotingSystem.git
-   cd OnlineVotingSystem
-   ```
+- **JDK:** Java 11 or a version compatible with the project configuration
+- **Apache Maven:** For building the project
+- **MySQL Server:** For database storage
+- **Apache Tomcat 9:** For deployment
+- **IDE:** Eclipse or another Java-compatible IDE (optional)
 
-2. **Create a MySQL database**
+---
 
-   Create a database for the application, for example:
-   ```sql
-   CREATE DATABASE online_voting;
-   ```
+## 🚀 Installation and Setup
 
-3. **Configure the database connection**
+### 1. Clone the Repository
 
-   Update the database URL, username, password, and Hibernate settings in the project's Spring/Hibernate configuration. Do not commit real database credentials to GitHub. Use environment variables or a local, ignored configuration file where practical.
+Replace `YOUR_USERNAME` with your actual GitHub username.
 
-4. **Build the WAR**
-   ```bash
-   mvn clean package
-   ```
+```bash
+git clone https://github.com/YOUR_USERNAME/OnlineVotingSystem.git
+cd OnlineVotingSystem
+```
 
-5. **Deploy to Tomcat**
+### 2. Create the Database
 
-   Copy `target/OnlineVotingSystem.war` into Tomcat's `webapps` directory, start Tomcat, and open:
-   ```text
-   http://localhost:8080/OnlineVotingSystem/
-   ```
+Open MySQL and execute:
 
-   The exact URL may vary depending on your Tomcat context path and deployment configuration.
+```sql
+CREATE DATABASE online_voting;
+```
 
-## Default Demo Data
+### 3. Configure Database Connectivity
 
-The current source includes startup seeding for an administrator account and sample candidates. The seeded administrator credentials are defined in `com.config.DataSeeder`.
+Update the database URL, username, password, and Hibernate properties in your project's existing Spring/Hibernate configuration.
 
-**Security warning:** The current implementation seeds a known username and password, and the user model stores the password as a plain string. Change/remove demo credentials and implement secure password hashing before any deployment beyond a local demonstration. Never expose this application publicly in its current state.
+Example database URL:
 
-## Current Limitations and Security Notes
+```text
+jdbc:mysql://localhost:3306/online_voting
+```
 
-This is a student/learning project, not an election-grade system. Before any real-world use, it would need, at minimum:
+**Security tip:** Never upload real database credentials to GitHub. Keep sensitive configuration in environment variables or a local configuration file excluded from version control.
+
+### 4. Build the Project
+
+Run the following command from the project root:
+
+```bash
+mvn clean package
+```
+
+After a successful build, Maven should generate the WAR file in the `target/` directory.
+
+### 5. Deploy on Apache Tomcat
+
+Copy the generated WAR file into Tomcat's `webapps/` directory and start the server.
+
+Open the application in your browser:
+
+```text
+http://localhost:8080/OnlineVotingSystem/
+```
+
+The exact URL and WAR filename depend on your project configuration and deployment settings.
+
+---
+
+## 🔐 Demo Data and Security
+
+The project contains startup data seeding for an administrator account and sample candidates. The seeded administrator credentials are defined in `com.config.DataSeeder`.
+
+Before running the application:
+
+- Check the configured demo username and password.
+- Remove or change default credentials.
+- Never publish working administrator credentials.
+- Do not deploy the current implementation publicly.
+
+The current implementation stores passwords as plain strings. This is **not secure for production use**. Use a suitable password-hashing algorithm and strengthen authentication and authorization before considering any real-world deployment.
+
+---
+
+## ⚠️ Limitations and Future Improvements
+
+This is an educational project, not an election-grade voting platform.
+
+Potential improvements include:
 
 - Secure password hashing and credential management
-- CSRF protection and stronger authentication/session controls
-- Server-side validation and authorization checks on every sensitive operation
-- Transaction-safe vote recording and robust duplicate-vote prevention
-- Auditability, privacy protections, testing, and independent security review
-- Deployment hardening and protection of database secrets
+- CSRF protection and stronger session management
+- Server-side validation and role-based authorization
+- Transaction-safe vote recording and duplicate-vote prevention
+- Better error handling and automated testing
+- Audit logging and privacy protections
+- Secure deployment and database-secret management
+- Independent security testing
 
-## Contributing
+These are recommendations for future work, not claims that the current application already implements them.
 
-Suggestions and improvements are welcome. For substantial changes, open an issue first to discuss what you would like to change.
+---
 
-## License
+## 📄 License
 
-This project is distributed under the MIT License. See the [`LICENSE`](LICENSE) file. Use this license only if you own the project code or have permission to license all included material.
+**Copyright © 2026 Chetan Dhawas. All Rights Reserved.**
+
+This repository is provided for viewing and educational demonstration. No permission is granted to copy, modify, redistribute, publish, or commercially use the project without obtaining prior written authorization from the copyright holder, except where permitted by applicable law.
+
+For permission to use any part of this code, contact the copyright holder before use.
+
+See the [`LICENSE`](LICENSE) file for the full terms.
+
+---
+
+## 📬 Contact
+
+**Chetan Dhawas**  
+*Java Full Stack Developer | Computer Engineering Student*
+
+- 💻 **GitHub:** [chetandhawas9](https://github.com/chetandhawas9)
+- 💼 **LinkedIn:** [chetan-dhawas](https://linkedin.com/in/chetan-dhawas)
+- 📧 **Email:** chetandhawas9@gmail.com
+For project-related questions, collaboration proposals, or permission to use this source code, please contact me through the details above.
+
+---
+
+<p align="center">
+  <b>Developed with ☕ Java by Chetan Dhawas</b>
+  <br/>
+  <i>Learn • Build • Improve</i>
+</p>
